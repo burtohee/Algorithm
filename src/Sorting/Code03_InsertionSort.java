@@ -93,9 +93,9 @@ public class Code03_InsertionSort {
         comparator(arrCopy);
 
         if (isEqual(arr, arrCopy)) {
-            System.out.println("Selection sort works correctly!");
+            System.out.println("Insertion sort works correctly!");
         } else {
-            System.out.println("Selection sort failed.");
+            System.out.println("Insertion sort failed.");
         }
 
         printArray(arr);

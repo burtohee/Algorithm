@@ -104,9 +104,9 @@ public class Code02_BubbleSort {
         comparator(arrCopy);
 
         if (isEqual(arr, arrCopy)) {
-            System.out.println("Selection sort works correctly!");
+            System.out.println("Bubble sort works correctly!");
         } else {
-            System.out.println("Selection sort failed.");
+            System.out.println("Bubble sort failed.");
         }
 
         printArray(arr);
