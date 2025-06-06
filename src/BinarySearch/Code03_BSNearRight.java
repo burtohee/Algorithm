@@ -1,9 +1,11 @@
+
+
 package BinarySearch;
 
-import java.util.Arrays;
 
+public class Code03_BSNearRight {
 
-public class Code01_BSBasic {
+    // in a sorted array, find the index of most right position which <= target
 
     /*
         BS need sorted array most time, like find index of element,
@@ -12,38 +14,44 @@ public class Code01_BSBasic {
         But when dealing with partial minimum question, BS can solve it, with unsorted array but, condition: the two closed elements can not be equal, abc; a != b != c
      */
 
-    public static int binarySearch(int[] arr, int target)
+    public static int binarySearchNearRight(int[] sortedArr, int target)
     {
-        int left = 0;
-        int right = arr.length - 1;
+        if(sortedArr == null || sortedArr.length == 0)
+            return -1;
 
+        int left = 0;
+        int right = sortedArr.length - 1;
+        int nearRightIndex  = -1;
+
+        // L ... R; at least one number
         while (left <= right)
         {
-            int mid = left + (right - left) /2;
+//            int mid = left + (right - left) / 2;
+            int mid = left + ((right - left) >> 1);
 
-            if(arr[mid] == target)
-                return mid;
-
-            if(arr[mid] > target )
-                right = mid -1;
-            else
+            if(sortedArr[mid] <= target )
+            {
+                nearRightIndex = mid;
                 left = mid +1;
+            }
+            else
+                right = mid -1;
         }
 
 
-        return -1;
+        return nearRightIndex;
     }
 
-    public static int indexOf(int[] arr, int target) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == target) return i;
+    public static int findNearRight(int[] sortedArr, int target) {
+        for (int i = sortedArr.length - 1; i >= 0; i--) {
+            if (sortedArr[i] <= target) return i;
         }
         return -1; // not found
     }
 
     // Comparator: sorts array using Java's built-in sort
     public static int comparator(int[] arr, int target) {
-        return indexOf(arr, target);
+        return findNearRight(arr, target);
     }
 
     public static boolean isEqual(int int1, int int2)
@@ -67,19 +75,20 @@ public class Code01_BSBasic {
 
     public static void main(String[] arg)
     {
-        int[] arr = {2,5,7,8,9,12};
-        int target = 7;
+        int[] arr = {1,2,3,3,3,3,4,5,5,6,7,8,9,9,9};
+//        int[] arr = {1,2,2,4};
+        int target = 3;
 
-        int bsResult = binarySearch(arr, target);
+        int bsNearRightResult = binarySearchNearRight(arr, target);
         int loopSearchResult = comparator(arr, target);
 
-        if (isEqual(bsResult, loopSearchResult)) {
-            System.out.println("BS works correctly!");
+        if (isEqual(bsNearRightResult, loopSearchResult)) {
+            System.out.println("BSNearRight works correctly!");
         } else {
-            System.out.println("BS sort failed.");
+            System.out.println("BSNearRight sort failed.");
         }
 
         printArray(arr);
-        System.out.printf("Element %d, found at index: %d\n", target, bsResult);
+        System.out.printf("Target %d, >= near right found at index: %d\n", target, bsNearRightResult);
     }
 }
