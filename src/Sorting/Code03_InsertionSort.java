@@ -13,16 +13,26 @@ public class Code03_InsertionSort {
         // 0 ~ 1
         // 0 ~ 2
         // 0 ~ n-1
-        for(int end = 1; end < arr.length; end++)
+        for(int cur = 1; cur < arr.length; cur++)
         {
-//            while(end-1 >= 0 && arr[end - 1] > arr[end])
+            /*
+                cur start at 1 index, because insertionSort always check values on the left
+                , cur loop through all index to last index
+             */
+
+//            while(cur-1 >= 0 && arr[cur - 1] > arr[cur])
 //            {
-//                swap(arr, end, end - 1);
-//                end--;
+//                swap(arr, cur, cur - 1);
+//                cur--;
 //            }
 
-            for(int pre = end - 1; pre >= 0 && arr[pre] > arr[pre + 1]; pre--)
+            for(int pre = cur - 1; pre >= 0 && arr[pre] > arr[pre + 1]; pre--)
             {
+                /*
+                    pre start at left side of cur, and compare pre and current(cur)
+                    , cur loop through all indexes on the left
+                    , loop condition when 1. there is nothing on the left; 2. pre index value (pre) is larger than current index value (pre + 1)
+                */
                 swap(arr, pre, pre + 1);
             }
         }
@@ -31,9 +41,10 @@ public class Code03_InsertionSort {
 
     public static void swap(int [] arr, int i, int j)
     {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        // this swap will not work if, i == j
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
     }
 
     // Comparator: sorts array using Java's built-in sort

@@ -11,23 +11,30 @@ public class Code01_SelectionSort {
         // 0 ~ N -1
         // 1 ~ N -1
         // 2 ~ N -1
-        for(int i =0; i < arr.length - 1; i++)
+        for(int cur =0; cur < arr.length - 1; cur++)
         {
-            int minIndex = i;
-            for (int j = i + 1; j < arr.length; j++)
+            /*
+                cur start at 0 index, and loop through all indexes except last indexed, because at the n - 2 round, the last index will be sorted
+             */
+            int minIndex = cur;
+            for (int comparedIndex = cur + 1; comparedIndex < arr.length; comparedIndex++)
             {
-                minIndex = arr[j] < arr[minIndex] ? j : minIndex;
+                /*
+                    comparedIndex related to cur + 1 when initial, loop through all indexes to the end
+                 */
+
+                minIndex = arr[comparedIndex] < arr[minIndex] ? comparedIndex : minIndex;
             }
-            swap(arr, i , minIndex);
+            swap(arr, cur , minIndex);
         }
 
     }
 
-    public static void swap(int [] arr, int i, int j)
+    public static void swap(int [] arr, int index1, int index2)
     {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        int temp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = temp;
     }
 
     // Comparator: sorts array using Java's built-in sort
