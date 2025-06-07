@@ -12,38 +12,89 @@ public class Code04_BSAwesome {
         But when dealing with partial minimum question, BS can solve it, with unsorted array but, condition: the two closed elements can not be equal, abc; a != b != c
      */
 
-    public static int binarySearch(int[] arr, int target)
+    public static int binarySearchAwesome(int[] arr)
     {
-        int left = 0;
-        int right = arr.length - 1;
-
-        while (left <= right)
+        if(arr == null || arr.length == 0)
         {
-            int mid = left + (right - left) /2;
-
-            if(arr[mid] == target)
-                return mid;
-
-            if(arr[mid] > target )
-                right = mid -1;
-            else
-                left = mid +1;
+            return -1;
         }
+        int arrLength = arr.length;
+
+        if(arrLength == 1 || arr[0] < arr[1])
+            return 0;
+        if(arr[arrLength -1] < arr[arrLength - 2])
+            return arrLength -1;
+
+        /*
+            the binary split from 1 ~ N - 2
+         */
+        int left = 1;
+        int right = arrLength - 2;
+        int mid = 0;
+        while (left < right)
+        {
+            mid = left + (right - left) /2;
+            System.out.println(left+ " "+mid+ " "+ right);
+            if(arr[mid] > arr[mid - 1])
+            {
+                right = mid -1;
+            }
+            else if (arr[mid] > arr[mid + 1])
+            {
+                left = mid +1;
+            }
+            else if(arr[mid] == arr[mid + 1] && arr[mid] == arr[mid - 1])
+            {
+                throw new Error("The Error does not match the condition");
+            }
+            else
+            {
+                System.out.printf("%d %d %d\n", arr[mid -1 ], arr[mid] ,arr[mid + 1]);
+                return mid;
+            }
 
 
-        return -1;
+//            if(arr[mid] > arr[mid-1])
+//            {
+//                right = mid-1;
+//            }
+//            else if (arr[mid] < arr[mid-1])
+//            {
+//                left = mid+1;
+//            }
+//            else {
+//                return mid;
+//            }
+        }
+        return left;
     }
 
-    public static int indexOf(int[] arr, int target) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == target) return i;
+    public static int findPartialMin(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            throw new IllegalArgumentException("Array is null or empty");
         }
-        return -1; // not found
+        int arrLength = arr.length;
+
+        if(arrLength == 1 || arr[0] < arr[1])
+            return 0;
+        if(arr[arrLength -1] < arr[arrLength - 2])
+            return arrLength -1;
+
+        for (int i = 0; i < arrLength; i++) {
+            boolean leftOk = (i == 0) || (arr[i] < arr[i - 1]);
+            boolean rightOk = (i == arrLength - 1) || (arr[i] < arr[i + 1]);
+
+            if (leftOk && rightOk) {
+                return arr[i];
+            }
+        }
+
+        throw new RuntimeException("No partial minimum found");
     }
 
     // Comparator: sorts array using Java's built-in sort
-    public static int comparator(int[] arr, int target) {
-        return indexOf(arr, target);
+    public static int comparator(int[] arr) {
+        return findPartialMin(arr);
     }
 
     public static boolean isEqual(int int1, int int2)
@@ -67,19 +118,19 @@ public class Code04_BSAwesome {
 
     public static void main(String[] arg)
     {
-        int[] arr = {2,5,7,8,9,12};
-        int target = 7;
+        int[] arr = {5, 1, 4, 2 , 3, 8};
 
-        int bsResult = binarySearch(arr, target);
-        int loopSearchResult = comparator(arr, target);
+        int bsAwesomeResult = binarySearchAwesome(arr);
+        System.out.println(bsAwesomeResult);
+        int loopSearchResult = comparator(arr);
 
-        if (isEqual(bsResult, loopSearchResult)) {
+        if (isEqual(bsAwesomeResult, loopSearchResult)) {
             System.out.println("BS works correctly!");
         } else {
             System.out.println("BS sort failed.");
         }
 
         printArray(arr);
-        System.out.printf("Element %d, found at index: %d\n", target, bsResult);
+        System.out.printf("Found one Partial minimum at index: %d\n", bsAwesomeResult);
     }
 }

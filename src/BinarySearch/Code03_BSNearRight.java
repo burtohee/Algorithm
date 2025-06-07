@@ -77,7 +77,7 @@ public class Code03_BSNearRight {
     {
         int[] arr = {1,2,3,3,3,3,4,5,5,6,7,8,9,9,9};
 //        int[] arr = {1,2,2,4};
-        int target = 3;
+        int target = 9;
 
         int bsNearRightResult = binarySearchNearRight(arr, target);
         int loopSearchResult = comparator(arr, target);

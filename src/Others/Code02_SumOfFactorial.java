@@ -1,6 +1,6 @@
 package Others;
 
-public class Code01_SumOfFactorial {
+public class Code02_SumOfFactorial {
 
     public static long factorialWithRecursive(int n) {
         if (n == 0) return 1;
