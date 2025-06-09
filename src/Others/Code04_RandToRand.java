@@ -364,6 +364,25 @@ public class Code04_RandToRand {
     }
 
 
+    // In library, randomChanceNotEqual() will return 0;1 with fix,not equal random chance, And you can not see how this function works
+    public static int randomChanceNotEqual()
+    {
+        return  Math.random() < 0.89? 0:1;
+    }
+
+    // to make it return 0,1 with equal random rate.
+    // - by, using the randomChanceNotEqual() twice, 00,11=> Dont use ; 01 10=> Use it, with 01:P*(P-1); 10:P*(P-1), therefore 01;10 with equal chance
+    public static int makeItToRandomEqualChanceFromRandomChanceNotEqual()
+    {
+        int ans =0;
+        do {
+            ans = randomChanceNotEqual();
+        }while(ans == randomChanceNotEqual());
+
+        return ans;
+    }
+
+
 
 
 
