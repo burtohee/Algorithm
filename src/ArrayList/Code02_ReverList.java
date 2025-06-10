@@ -36,6 +36,7 @@ public class Code02_ReverList {
          */
         while(head != null)
         {
+            // recording head.next to next
             /*
                 a   ->      b   ->      c    ->  null
                 -           -
@@ -44,6 +45,8 @@ public class Code02_ReverList {
                - record the original head.next, since after we change head, we will lose the original head.next
             */
             next = head.next;
+
+            // start reversing
             /*
                 a   ->      b   ->      c    ->  null
                 -           -
@@ -60,6 +63,7 @@ public class Code02_ReverList {
             head.next = pre;
 
 
+            //  reset prev to the to old head location, reset head to the recorded next location
             /*
                 null(prev)  <-      a           b   ->      c    ->  null
                                     -           -
@@ -87,21 +91,23 @@ public class Code02_ReverList {
 
         while(head != null)
         {
+            // recording head.next to next
             /*
                 null    <~   a   ->      b   ->      c    ->     null
                                  <~          <~
-
+                                         -
                              -           -
-                 pre        head        next
+                           head        next
 
                - record the original head.next, since after we change head, we will lose the original head.next
             */
             next = head.next;
 
+            // start reversing
             /*
                 null    <-    a           b   ->      c    ->     null
                                   ~>          <~
-
+                  -                -
                               -           -
                  pre         head        next
 
@@ -111,6 +117,7 @@ public class Code02_ReverList {
             head.next = pre;
             head.last = next;
 
+            // reset locations
             /*
                 null    <-    a           b   ->      c    ->     null
                                   ~>          <~
@@ -120,6 +127,7 @@ public class Code02_ReverList {
 
                - update finished, then we back to reset the pre pointer with head, and head pointer with next
             */
+            // reset prev the old head location, reset head to new head location/next
 
             pre = head;
             head = next;

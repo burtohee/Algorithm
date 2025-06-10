@@ -1,6 +1,8 @@
 package HashMap;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class Code01_HashMapBasic {
@@ -145,6 +147,15 @@ public class Code01_HashMapBasic {
 
 
 
+
+        /*
+                - When to Use LinkedHashMap
+                    - When you want predictable iteration order (the same as insertion).
+
+                    - When order matters (e.g., history, ordered configuration, etc.).
+
+         */
+        Map<String, Integer> balance = new LinkedHashMap<>();
 
 
 
