@@ -7,7 +7,7 @@ import java.util.Arrays;
 // 每个人都必须拿出1元钱给除自己以外的其他人，给谁完全随机
 // 如果某个人在这一轮的钱数为0，那么他可以不给，但是可以接收
 // 发生很多很多轮之后，这100人的社会财富分布很均匀吗？
-public class Experiment {
+public class Code100_Experiment {
 
     public static void main(String[] args) {
         System.out.println("一个社会的基尼系数是一个在0~1之间的小数");

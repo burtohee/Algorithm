@@ -1,6 +1,6 @@
-package Others;
+package _00_class01;
 
-public class Code01_PrintB {
+public class Code01_PrintBinary {
 
     public static void printB(int num)
     {

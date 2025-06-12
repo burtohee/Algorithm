@@ -1,4 +1,4 @@
-package Others;
+package _02_Others;
 
 public class Code04_RandToRand {
 

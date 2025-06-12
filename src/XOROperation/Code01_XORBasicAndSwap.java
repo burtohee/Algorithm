@@ -1,5 +1,7 @@
 package XOROperation;
 
+import Others.Code01_PrintBinary;
+
 public class Code01_XORBasicAndSwap {
 
     // a must be not equal to b
@@ -45,12 +47,12 @@ public class Code01_XORBasicAndSwap {
         int a = 7;
         int b = 9;
 
-        Others.Code01_PrintB.printB(a);
-        Others.Code01_PrintB.printB(b);
+        Code01_PrintBinary.printB(a);
+        Code01_PrintBinary.printB(b);
 
         System.out.println("=======");
         int c = a ^ b;
-        Others.Code01_PrintB.printB(c);
+        Code01_PrintBinary.printB(c);
         System.out.println("=======");
     }
 }
