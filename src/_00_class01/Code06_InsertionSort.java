@@ -35,6 +35,16 @@ public class Code06_InsertionSort {
                 */
                 swap(arr, pre, pre + 1);
             }
+
+//            for(int curDot = cur; curDot > 0 && arr[curDot - 1] > arr[curDot]; curDot--)
+//            {
+//                /*
+//                    pre start at left side of cur, and compare pre and current(cur)
+//                    , cur loop through all indexes on the left
+//                    , loop condition when 1. there is nothing on the left; 2. pre index value (pre) is larger than current index value (pre + 1)
+//                */
+//                swap(arr, curDot, curDot - 1);
+//            }
         }
 
     }

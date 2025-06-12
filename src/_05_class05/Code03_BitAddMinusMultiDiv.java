@@ -15,7 +15,7 @@ public class Code03_BitAddMinusMultiDiv {
 
 
                 int a = 46:  32 + 14(8+4+2) + 0 == 00000 1 0 1 1 1 0
-                                                  ^
+                                                 ^
                 int b = 20:  16 + 4 + 0         == 00000 0 1 0 1 0 0
 
                                                    00000 1 1 1 0 1 0 ( a^b is : no carry-out addition)
@@ -32,12 +32,12 @@ public class Code03_BitAddMinusMultiDiv {
 
 
                 int a = 46:  32 + 14(8+4+2) + 0 == 00000 1 0 1 1 1 0
-                                                  &
+                                                 &
                 int b = 20:  16 + 4 + 0         == 00000 0 1 0 1 0 0
 
                                                    00000 0 0 0 1 0 0 ( (a&b) is : carry-out location information)
 
-                                                   00000 0 0 1 0 0 0 ( 1<<(a&b) is : carry-out information)
+                                                   00000 0 0 1 0 0 0 ( (a & b) << 1 is : carry-out information)
          */
 
         /*
@@ -57,9 +57,9 @@ public class Code03_BitAddMinusMultiDiv {
                                                    00000 0 0 0 1 0 0 ( (a&b) is : carry-out location information)
 
                                                    00000 1 1 1 0 1 0 ( (a^b) is : no carry-out addition)
-                                                   00000 0 0 1 0 0 0 ( 1<<(a&b) is : carry-out information)
+                                                   00000 0 0 1 0 0 0 ( (a & b) << 1) is : carry-out information)
                                                                      (no carryout addition + carryout information)
-                                                                     ( (a^b) + (1<<(a&b)) is : a,b addition)
+                                                                     ( (a^b) + ((a & b) << 1) is : a,b addition)
          */
 
         /*

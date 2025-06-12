@@ -63,6 +63,8 @@ public class Code01_PrintBinary {
         // negative int: 1 (~0000000000000000000000000000101 + 1)
         System.out.println(maxInt);
         printB(maxInt);
+        System.out.println(-maxInt);
+        printB(-maxInt);
 
         System.out.println();
         int negative1 = -1;
@@ -77,6 +79,8 @@ public class Code01_PrintBinary {
         int minInt = Integer.MIN_VALUE; // -2^31
         System.out.println(minInt);
         printB(minInt);
+        System.out.println(-minInt);
+        printB(-minInt);
 
         System.out.println();
         int b = 123823138;
@@ -122,7 +126,7 @@ public class Code01_PrintBinary {
         printB(minInt >>> 1);
 
         System.out.println("===============");
-        int f= 5;
+        int f= 7;
         int g= -f;
         int h= (~f + 1);
         int i= (~h + 1);

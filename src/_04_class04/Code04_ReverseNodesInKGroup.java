@@ -56,6 +56,7 @@ public class Code04_ReverseNodesInKGroup {
 
             // cant even make more than 1 group
          */
+        // only 1 set
         if (end == null) {
             return head;
         }
@@ -134,6 +135,7 @@ public class Code04_ReverseNodesInKGroup {
 
              */
             end = getKGroupEnd(start, k);
+            // only 1.5 set
             if (end == null) {
                 return head;
             }
@@ -146,6 +148,7 @@ public class Code04_ReverseNodesInKGroup {
                 Because, f  ->  e -> d->....
 
              */
+            // at least 2 set
             reverse(start, end);
 
 

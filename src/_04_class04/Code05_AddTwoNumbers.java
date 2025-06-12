@@ -110,6 +110,7 @@ public class Code05_AddTwoNumbers {
         return result.next;
     }
 
+    // HEAD 1 AND HEAD 2 IS NOT A NULL NODE
     public static ListNode addTwoNumbersWithRecursive(ListNode head1, ListNode head2)
     {
         int total = head1.val + head2.val;
