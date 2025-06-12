@@ -1,4 +1,4 @@
-package _03_class02;
+package _02_class02;
 
 
 public class Code03_Comp {

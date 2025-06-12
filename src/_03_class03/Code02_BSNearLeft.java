@@ -1,11 +1,10 @@
 
+package _03_class03;
 
-package _04_class03;
 
+public class Code02_BSNearLeft {
 
-public class Code03_BSNearRight {
-
-    // in a sorted array, find the index of most right position which <= target
+    // in a sorted array, find the index of most left position which >= target
 
     /*
         BS need sorted array most time, like find index of element,
@@ -14,44 +13,42 @@ public class Code03_BSNearRight {
         But when dealing with partial minimum question, BS can solve it, with unsorted array but, condition: the two closed elements can not be equal, abc; a != b != c
      */
 
-    public static int binarySearchNearRight(int[] sortedArr, int target)
+    public static int binarySearchNearLeft(int[] sortedArr, int target)
     {
         if(sortedArr == null || sortedArr.length == 0)
             return -1;
 
         int left = 0;
         int right = sortedArr.length - 1;
-        int nearRightIndex  = -1;
+        int nearLeftIndex  = -1;
 
-        // L ... R; at least one number
+        // L ... R; at least one number, to use binary split
         while (left <= right)
         {
 //            int mid = left + (right - left) / 2;
             int mid = left + ((right - left) >> 1);
-
-            if(sortedArr[mid] <= target )
+            if(sortedArr[mid] >= target )
             {
-                nearRightIndex = mid;
-                left = mid +1;
+                nearLeftIndex = mid;
+                right = mid -1;
             }
             else
-                right = mid -1;
+                left = mid +1;
         }
 
-
-        return nearRightIndex;
+        return nearLeftIndex;
     }
 
-    public static int findNearRight(int[] sortedArr, int target) {
-        for (int i = sortedArr.length - 1; i >= 0; i--) {
-            if (sortedArr[i] <= target) return i;
+    public static int findNearLeft(int[] sortedArr, int target) {
+        for (int i = 0; i < sortedArr.length; i++) {
+            if (sortedArr[i] >= target) return i;
         }
         return -1; // not found
     }
 
     // Comparator: sorts array using Java's built-in sort
     public static int comparator(int[] arr, int target) {
-        return findNearRight(arr, target);
+        return findNearLeft(arr, target);
     }
 
     public static boolean isEqual(int int1, int int2)
@@ -75,20 +72,20 @@ public class Code03_BSNearRight {
 
     public static void main(String[] arg)
     {
-        int[] arr = {1,2,3,3,3,3,4,5,5,6,7,8,9,9,9};
-//        int[] arr = {1,2,2,4};
-        int target = 9;
+        int[] sortedArr = {1,2,3,3,3,3,4,5,5,6,7,8,9,9,9};
+//        int[] sortedArr = {1,2,2,4};
+        int target = 3;
 
-        int bsNearRightResult = binarySearchNearRight(arr, target);
-        int loopSearchResult = comparator(arr, target);
+        int bsNearLeftResult = binarySearchNearLeft(sortedArr, target);
+        int loopSearchResult = comparator(sortedArr, target);
 
-        if (isEqual(bsNearRightResult, loopSearchResult)) {
-            System.out.println("BSNearRight works correctly!");
+        if (isEqual(bsNearLeftResult, loopSearchResult)) {
+            System.out.println("BSNearLeft works correctly!");
         } else {
-            System.out.println("BSNearRight sort failed.");
+            System.out.println("BSNearLeft sort failed.");
         }
 
-        printArray(arr);
-        System.out.printf("Target %d, >= near right found at index: %d\n", target, bsNearRightResult);
+        printArray(sortedArr);
+        System.out.printf("Target %d, <= near left found at index: %d\n", target, bsNearLeftResult);
     }
 }

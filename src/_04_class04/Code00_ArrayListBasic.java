@@ -1,4 +1,4 @@
-package ArrayList;
+package _04_class04;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -16,7 +16,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
         , therefore, even the size is increasing, but ArrayList is O(1) similar to Array
  */
 
-public class Code01_ArrayListBasic {
+public class Code00_ArrayListBasic {
 
     class Person {
         String name;

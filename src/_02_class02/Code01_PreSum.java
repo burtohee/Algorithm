@@ -1,6 +1,6 @@
-package _02_Others;
+package _02_class02;
 
-public class Code03_SumofArrayLeftToRight {
+public class Code01_PreSum {
 
 
     public static class RangeSumWithLeftToRight

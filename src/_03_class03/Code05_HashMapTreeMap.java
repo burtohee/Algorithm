@@ -1,4 +1,4 @@
-package _04_class03;
+package _03_class03;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;

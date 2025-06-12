@@ -1,6 +1,6 @@
-package ArrayList;
+package _04_class04;
 
-public class Code06_AddTwoNumbers {
+public class Code05_AddTwoNumbers {
 
 
     // 不要提交这个类

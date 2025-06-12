@@ -3,7 +3,7 @@ package ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 
-public class Code04_DoubleLinkedListToDeque {
+public class Code03_DoubleLinkedListToDeque {
 
     public static class DoubleLinkedListNode<V> {
         public V value;

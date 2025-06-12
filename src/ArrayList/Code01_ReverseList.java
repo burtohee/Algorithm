@@ -1,6 +1,6 @@
 package ArrayList;
 
-public class Code02_ReverList {
+public class Code01_ReverseList {
 
     public static class Node
     {

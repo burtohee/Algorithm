@@ -1,6 +1,6 @@
-package _02_Others;
+package _02_class02;
 
-public class Code04_RandToRand {
+public class Code02_RandToRand {
 
     public static void proveRandomEqualChance(int times , float lessThan)
     {
