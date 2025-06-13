@@ -252,7 +252,8 @@ public class Code02_RandToRand {
         // start ~ end
         int N = (end-start) + 1;
         int ans = 0;
-        int mid = (start + end) / 2;
+//        int mid = (start + end) / 2;
+        int mid = (start + end) >> 1;
         if(N % 2 != 0)
         {
             do {

@@ -82,15 +82,38 @@ public class Code01_PrintBinary {
         int b = 123823138;
         int c = ~b;
         /*
+
+            2147483647 : 01111111111111111111111111111111
+           -2147483647 : 10000000000000000000000000000001
+
+           -2147483648 : 10000000000000000000000000000000
+
+            - positive binary to negative binary:
+                    - 0111  (7)
+                    1. Flip all the bits: 1000
+                    2. Add 1: 1000 + 1 = 1001 (-7)
+
+                    - 0001  (1)
+                    1. Flip all the bits: 1110
+                    2. Add 1: 1110 + 1 = 1111 (-1)
+
+                    - 0000000010000000  (128 )
+                    1. Flip all the bits: 11111111 0 1111111
+                    2. Add 1: 11111111 0 1111111 = 11111111 1 0000000 (-128)
+
             - negative binary to positive binary:
                 - 1001 (-7)
                 1. Invert the bits: Change all 0s to 1s and all 1s to 0s in the binary number.                  0110
                 2. Add 1: Add 1 to the inverted binary number.                                                  0111
                 3. Ignore carry-out: If there's a carry-out from the most significant bit (MSB), discard it.    0111
-            - positive binary to negative binary:
-                - 0111  (7)
-                1. Flip all the bits: 1000
-                2. Add 1: 1000 + 1 = 1001 (-7)
+
+                - 1 000 000 0 (-128)
+                1. Invert the bits: Change all 0s to 1s and all 1s to 0s in the binary number.                  0 111 111 1
+                                                                                                                  * (no forward carry-out)
+                2. Add 1: Add 1 to the inverted binary number.                                                  1 000 000 0
+                                                                                                                  * (no forward carry-out)
+                3. Ignore carry-out: If there's a carry-out from the most significant bit (MSB), discard it.
+
          */
 
         System.out.println(b);

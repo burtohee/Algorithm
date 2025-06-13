@@ -131,7 +131,9 @@ public class Code02_XORFindEvenTImesOddTimes {
                       , since all other numbers are even appearance, then we will remove them on that set, then we have separated odd appearance a,b into 2 sets.
          */
 
+
         // Get its last set bit
+//        xorVal = xorVal & (~xorVal + 1);
         xorVal &= -xorVal;
         int[] ans = {0, 0};
         for (int i = 0; i < n; i++) {
