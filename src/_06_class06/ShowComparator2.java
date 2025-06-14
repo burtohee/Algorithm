@@ -1,7 +1,6 @@
 package _06_class06;
 
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class ShowComparator2 {
 
@@ -24,7 +23,20 @@ public class ShowComparator2 {
 
     }
 
-    public static class Student {
+    public static class MyStringComparator implements Comparator<String> {
+
+        // 负，第一个参数在前
+        // 正，第二个参数在前
+        // 0, 谁放前都行
+        @Override
+        public int compare(String o1, String o2) {
+
+            return o2.compareTo(o1);
+        }
+
+    }
+
+    public static class Student implements Comparable<Student> {
         public String name;
         public int id;
         public int age;
@@ -34,6 +46,15 @@ public class ShowComparator2 {
             this.id = id;
             this.age = age;
         }
+
+//        if (s5.compareTo(s4) > 0) {
+//            System.out.println("s5 is older than s4");
+//        }
+        @Override
+        public int compareTo(Student other) {
+            return Integer.compare(this.age, other.age); // compare by age
+        }
+
     }
 
     // 谁id大，谁放前！
@@ -115,6 +136,10 @@ public class ShowComparator2 {
         Student s3 = new Student("王五", 4, 29);
         Student s4 = new Student("赵六", 3, 9);
         Student s5 = new Student("左七", 2, 34);
+        if(s4.compareTo(s5) <0)
+        {
+            System.out.println("S5 > s4");
+        }
         heap.add(s1);
         heap.add(s2);
         heap.add(s3);
@@ -125,6 +150,14 @@ public class ShowComparator2 {
             Student s = heap.poll();
             System.out.println(s.name + ", " + s.id + ", " + s.age);
         }
+
+        TreeSet<Student> treeSet = new TreeSet<>(new IdComparator());
+        TreeMap<String, Student> treeMap2 = new TreeMap<>(new MyStringComparator());
+        TreeMap<Student, Student> treeMap = new TreeMap<>(new IdComparator());
+
+        // java lambda
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+        Collections.sort(names, (a, b) -> a.compareTo(b));
     }
 
 }
