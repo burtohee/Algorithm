@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class ShowComparator {
+public class Code00_ShowComparator {
 
     public static class Student {
         public String name;

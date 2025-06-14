@@ -2,7 +2,7 @@ package _06_class06;
 
 import java.util.*;
 
-public class ShowComparator2 {
+public class Code01_ShowComparator2 {
 
     public static class MyComparator implements Comparator<Integer> {
 
