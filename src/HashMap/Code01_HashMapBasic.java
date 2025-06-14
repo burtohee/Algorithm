@@ -1,13 +1,10 @@
 package HashMap;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Code01_HashMapBasic {
 
-    public static class Node implements Comparable<Node>{
+    public static class Node implements Comparable<Node>, Comparator<Node> {
 
         public int value;
         public Node(int v)
@@ -19,6 +16,11 @@ public class Code01_HashMapBasic {
         public int compareTo(Node other)
         {
             return Integer.compare(value, other.value);
+        }
+        @Override
+        public int compare(Node other1, Node other2)
+        {
+            return Integer.compare(other1.value, other2.value);
         }
     }
 

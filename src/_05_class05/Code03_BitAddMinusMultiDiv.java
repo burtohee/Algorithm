@@ -277,10 +277,10 @@ public class Code03_BitAddMinusMultiDiv {
           ......
      */
 
-    public static int div(int a, int b) {
+    public static int div(int dividend, int divisor) {
         // convert a,b to positive
-        int x = isNeg(a) ? negNum(a) : a;
-        int y = isNeg(b) ? negNum(b) : b;
+        int x = isNeg(dividend) ? negNum(dividend) : dividend;
+        int y = isNeg(divisor) ? negNum(divisor) : divisor;
         int res = 0;
 
         /*
@@ -331,7 +331,7 @@ public class Code03_BitAddMinusMultiDiv {
         // 10,01 => 1; 00,11 => 0, same signed => 0, different sign => 1,
 
 //        return isNeg(a) != isNeg(b) ? negNum(res) : res;
-        return isNeg(a) ^ isNeg(b) ? negNum(res) : res;
+        return isNeg(dividend) ^ isNeg(divisor) ? negNum(res) : res;
 
         /*
             a=9, b=4, a/b, 9 / 4
@@ -357,26 +357,95 @@ public class Code03_BitAddMinusMultiDiv {
 
 
 
-    public static int divide(int a, int b) {
-        if (a == Integer.MIN_VALUE && b == Integer.MIN_VALUE) {
+    public static int divide(int dividend, int divisor) {
+        // Problem: there is no value for |Integer.MIN_VALUE|, so we need to convert Integer.MIN_VALUE to (Integer.MIN_VALUE + 1) to find the result
+
+        /*
+            condition 1: dividend == Integer.MIN_VALUE; divisor == Integer.MIN_VALUE
+                         dividend / divisor = 1;
+        */
+        if (dividend == Integer.MIN_VALUE && divisor == Integer.MIN_VALUE) {
             return 1;
-        } else if (b == Integer.MIN_VALUE) {
+        }
+        /*
+            condition 2: dividend != Integer.MIN_VALUE; divisor = Integer.MIN_VALUE
+                         ? / Integer.MIN_VALUE = 0;
+        */
+        else if (divisor == Integer.MIN_VALUE) {
             return 0;
-        } else if (a == Integer.MIN_VALUE) {
-            if (b == negNum(1)) {
+        }
+        /*
+            condition 3: dividend == Integer.MIN_VALUE; divisor != Integer.MIN_VALUE
+                         condition 3.1: dividend == Integer.MIN_VALUE; divisor == 1
+                         condition 3.2: dividend == Integer.MIN_VALUE; divisor != 1
+        */
+        else if (dividend == Integer.MIN_VALUE) {
+            /*
+                 condition 3.1: dividend == Integer.MIN_VALUE; divisor == 1
+                    return |Integer.MIN_VALUE| = Integer.MAX_VALUE + 1
+                    , but in java system does not have Integer.MAX_VALUE + 1, so we only return Integer.MAX_VALUE
+             */
+            if (divisor == negNum(1)) {
                 return Integer.MAX_VALUE;
-            } else {
-                int c = div(add(a, 1), b);
-                return add(c, div(minus(a, multi(c, b)), b));
             }
-        } else {
-            return div(a, b);
+             /*
+                 condition 3.2: dividend == Integer.MIN_VALUE; divisor != 1
+                    steps:
+                        c = (dividend + 1) / divisor
+                        diff = dividend - (c * divisor)
+                        c` = diff / divisor
+                        result = c + c`
+                        (here, all divide is all inside system value range)
+
+             */
+            else {
+                int c = div(add(dividend, 1), divisor);
+                return add(c, div(minus(dividend, multi(c, divisor)), divisor));
+
+
+                /*
+                         -20 / 5 =  [ (-19) / 5 ] + [ [(-20) - (-19 / 5) * (5)] / 5 ]
+                                 =  [ (-19) / 5 ] + [ [ -20 + 19 ] / 5 ]
+                                 =  [ (-19) / 5 ] + [  -1  / 5 ]
+                                 =  [ ( -19 - 1 ) / 5 ]
+                                 =  -20 / 5
+                                 = (-19 / 5) + (-1 / 5)
+                 */
+
+//                int first = add(dividend,1);
+//                int c_first = div(first, divisor);
+//                int d = multi(c_first, divisor);
+//                int diff = minus(dividend, d);
+//                int c_second = div(diff , d);
+//                int result = add(c_first,c_second);
+//                return  result;
+
+//                int first = add(dividend,1);
+//                int c_first = div(first, divisor);
+//                int c_second = div(-1 , divisor);
+//                int result = add(c_first,c_second);
+//                return  result;
+            }
+
+        }
+        /*
+            condition 4: dividend != Integer.MIN_VALUE; divisor != Integer.MIN_VALUE
+                         ? / ? = normal div(dividend, divisor);
+        */
+        else {
+            return div(dividend, divisor);
         }
     }
 
     public static void main(String [] args)
     {
         System.out.println(multi(-3,-4));
+        System.out.println(negNum(Integer.MIN_VALUE));
+        System.out.println(divide(Integer.MIN_VALUE,Integer.MIN_VALUE +1));
+        System.out.println(divide(-10,5));
+        System.out.println(divide(Integer.MAX_VALUE,Integer.MIN_VALUE));
+        System.out.println(divide(Integer.MAX_VALUE,Integer.MIN_VALUE + 1));
+        System.out.println(divide(Integer.MAX_VALUE, 5));
     }
 
 
