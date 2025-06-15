@@ -72,6 +72,8 @@ public class Code02_MergeKSortedLists {
 
      */
 
+
+    // O(N logM, M linked lists, total nodes is N)
     public static ListNode mergeKLists(ListNode[] lists) {
         // nothing in lists of linked list
         if (lists == null) {
