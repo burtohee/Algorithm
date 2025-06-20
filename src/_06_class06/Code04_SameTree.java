@@ -12,21 +12,21 @@ public class Code04_SameTree {
         public TreeNode right;
     }
 
-    public static boolean isSameTree(TreeNode p, TreeNode q)
+    public static boolean isSameTree(TreeNode tree1, TreeNode tree2)
     {
-        if( (p == null) ^ (q == null))
+        if( (tree1 == null) ^ (tree2 == null))
         {
             return false;
         }
 
-//        if((p == null) && (q == null))
-        if(p == null)
+//        if((tree1 == null) && (tree2 == null))
+        if(tree1 == null)
         {
             return true;
         }
 
-        // p and q are not null
-        return p.val == q.val && isSameTree(p.left, p.left) && isSameTree(p.right, p.right);
+        // tree1 and tree2 are not null
+        return tree1.val == tree2.val && isSameTree(tree1.left, tree2.left) && isSameTree(tree1.right, tree2.right);
 
     }
 }

@@ -30,14 +30,14 @@ public class Code05_SymmetricTree {
            (left3) (right2)       (left2)     (right3)
               Z       Y              Y`           Z`
      */
-    public static boolean isMirror(TreeNode h1, TreeNode h2) {
-        if (h1 == null ^ h2 == null) {
+    public static boolean isMirror(TreeNode tree1, TreeNode tree2) {
+        if (tree1 == null ^ tree2 == null) {
             return false;
         }
-        if (h1 == null && h2 == null) {
+        if (tree1 == null && tree2 == null) {
             return true;
         }
-        return h1.val == h2.val && isMirror(h1.left, h2.right) && isMirror(h1.right, h2.left);
+        return tree1.val == tree2.val && isMirror(tree1.left, tree2.right) && isMirror(tree1.right, tree2.left);
     }
 
 }
