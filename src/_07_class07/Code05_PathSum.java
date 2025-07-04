@@ -19,13 +19,51 @@ public class Code05_PathSum {
 
     }
 
-    public static boolean hasPathSum(TreeNode root, int sum)
+    public static boolean foundPathSum = false;
+    public static boolean hasPathSumWithAttribute(TreeNode root, int target)
     {
         if(root == null)
         {
             return false;
         }
-        return processPathSumRecursive(root, sum);
+        foundPathSum = false;
+        processPathSumWithAttribute(root, target, 0);
+        return foundPathSum;
+
+    }
+
+    public static void processPathSumWithAttribute(TreeNode currentNode, int target, int presum)
+    {
+        if(currentNode.left == null && currentNode.right == null)
+        {
+            if(presum + currentNode.val == target)
+            {
+                foundPathSum = true;
+            }
+            return;
+        }
+
+        presum += currentNode.val;
+        if(currentNode.left != null)
+        {
+            processPathSumWithAttribute(currentNode.left, target, presum);
+        }
+        if(currentNode.right != null)
+        {
+            processPathSumWithAttribute(currentNode.right, target, presum);
+        }
+    }
+
+
+
+
+    public static boolean hasPathSumWithRecursive(TreeNode root, int target)
+    {
+        if(root == null)
+        {
+            return false;
+        }
+        return processPathSumRecursive(root, target);
     }
 
     public static boolean processPathSumRecursive(TreeNode root, int rest)
@@ -69,7 +107,9 @@ public class Code05_PathSum {
         root.right.right = new TreeNode(4);
         root.right.right.right = new TreeNode(1);
 
-        System.out.println(hasPathSum(root, 22)); // Output: true
+        System.out.println(hasPathSumWithRecursive(root, 22)); // Output: true
+
+        System.out.println(hasPathSumWithAttribute(root, 22));
     }
 
 }
