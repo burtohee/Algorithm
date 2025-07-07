@@ -30,14 +30,11 @@ public class Code02_BubbleSort {
                     , and loop through all indexes which is not sorted, the reason is after each round, the last x-th indexes is sorted
                     so, second related to loopTimes
                 */
-
-
                 if(arr[second -1] > arr[second])
                 {
                     swap(arr, second - 1 , second);
                     swapped = true;
                 }
-
             }
 
             if (!swapped)
