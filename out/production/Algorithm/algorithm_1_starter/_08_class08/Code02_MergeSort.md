@@ -77,7 +77,4 @@
 ![alt text](../../../src/images/_08_class08/Code02_MergeSort_28.png)
 
 
-- Debug Mode:
-  ![alt text](../../../src/images/_08_class08/Code02_MergeSort_29.png)
-
 
