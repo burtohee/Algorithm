@@ -81,3 +81,18 @@
   ![alt text](../../../src/images/_08_class08/Code02_MergeSort_29.png)
 
 
+- Non recursive:
+- 
+  ![alt text](../../../src/images/_08_class08/Code02_MergeSort_30.png)
+  ![alt text](../../../src/images/_08_class08/Code02_MergeSort_31.png)
+  ![alt text](../../../src/images/_08_class08/Code02_MergeSort_32.png)
+  ![alt text](../../../src/images/_08_class08/Code02_MergeSort_33.png)
+  ![alt text](../../../src/images/_08_class08/Code02_MergeSort_34.png)
+  ![alt text](../../../src/images/_08_class08/Code02_MergeSort_35.png)
+  ![alt text](../../../src/images/_08_class08/Code02_MergeSort_36.png)
+  ![alt text](../../../src/images/_08_class08/Code02_MergeSort_37.png)
+  ![alt text](../../../src/images/_08_class08/Code02_MergeSort_38.png)
+  ![alt text](../../../src/images/_08_class08/Code02_MergeSort_39.png)
+  ![alt text](../../../src/images/_08_class08/Code02_MergeSort_40.png)
+
+
