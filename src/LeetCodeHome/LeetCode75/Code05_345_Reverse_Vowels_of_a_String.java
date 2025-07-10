@@ -54,6 +54,13 @@ public class Code05_345_Reverse_Vowels_of_a_String {
         String test1 = "IceCreAm";
         String test1res = processReverseVowels(test1);
         System.out.println(test1res);
+
+        String test2 = "IceCreAm";
+        String test2res = Solution1.processReverseVowels(test2);
+        System.out.println(test2res);
+
+
+
     }
 
 
@@ -86,11 +93,11 @@ public class Code05_345_Reverse_Vowels_of_a_String {
             while(L < R)
             {
 
-                while(L < R && !vowels.contains(loweredString.charAt(L)))
+                while(!vowels.contains(loweredString.charAt(L)))
                 {
                     L++;
                 }
-                while(L < R && !vowels.contains(loweredString.charAt(R)))
+                while(!vowels.contains(loweredString.charAt(R)))
                 {
                     R--;
                 }
