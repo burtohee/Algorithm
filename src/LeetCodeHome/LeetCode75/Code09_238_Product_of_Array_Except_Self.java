@@ -126,6 +126,7 @@ public class Code09_238_Product_of_Array_Except_Self {
         }
     }
 
+
     class Solution5 {
         public int[] productExceptSelf(int[] nums) {
             int product = 1;
@@ -134,19 +135,26 @@ public class Code09_238_Product_of_Array_Except_Self {
 
             for (int i = 0; i < nums.length; i++) {
                 if (nums[i] == 0) {
+                    // if we have more than 1 zero, break, when there is more then 1 zeros, all result will be 0
                     if (++zeroCount > 1)
                         break;
+                    // we find the location of zero index
                     zeroIndex = i;
                 } else
-                    product *= nums[i];
+                    product *= nums[i]; // keep getting total of product until finding zero
             }
 
+            // condition: when there is zero(s) in the nums array
             if (zeroCount > 0) {
+                // all other index result will be zero except that zero index
                 Arrays.fill(nums, 0);
 
+                // condition 1: only 1 zero, then that index result is product, rest will be 0
                 if (zeroCount == 1)
                     nums[zeroIndex] = product;
-            } else
+            }
+            // condition: when there is no zero in the nums array
+            else
                 for (int i = 0; i < nums.length; i++)
                     nums[i] = product / nums[i];
 
@@ -227,6 +235,30 @@ public class Code09_238_Product_of_Array_Except_Self {
             }
 
             return answer;
+        }
+    }
+
+    public static void main(String[] args) {
+        // Define test cases
+        int[][] testCases = {
+                {1, 2, 3, 4},
+                {0, 1, 2, 3},
+                {0, 0, 1, 2},
+                {1, 1, 1, 1},
+                {-1, -2, -3, -4},
+                {2, 2, 2, 2},
+                {2, 3},
+                {1, 2, 0, 4},
+                {1, 2, 3, 0}
+        };
+
+        Code09_238_Product_of_Array_Except_Self code09238ProductOfArrayExceptSelf = new Code09_238_Product_of_Array_Except_Self();
+        // Run and print results
+        for (int i = 0; i < testCases.length; i++) {
+            int[] result = code09238ProductOfArrayExceptSelf.productExceptSelf(testCases[i]);
+            System.out.println("Test Case " + (i + 1) + ": " + Arrays.toString(testCases[i]));
+            System.out.println("Output:         " + Arrays.toString(result));
+            System.out.println();
         }
     }
 
