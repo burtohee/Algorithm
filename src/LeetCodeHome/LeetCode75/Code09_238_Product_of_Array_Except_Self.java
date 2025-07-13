@@ -107,7 +107,7 @@ public class Code09_238_Product_of_Array_Except_Self {
     class Solution4 {
         public int[] productExceptSelf(int[] nums) {
             int length = nums.length;
-            int [] result = new int[length], suff = new int[length];
+            int [] result = new int[length];
             result[0] = 1;
 
             int i;
