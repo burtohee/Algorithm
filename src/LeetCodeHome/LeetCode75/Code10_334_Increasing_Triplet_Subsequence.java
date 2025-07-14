@@ -1,5 +1,7 @@
 package LeetCodeHome.LeetCode75;
 
+import java.util.ArrayList;
+
 public class Code10_334_Increasing_Triplet_Subsequence {
 
     public boolean increasingTriplet(int[] nums) {
@@ -37,6 +39,46 @@ public class Code10_334_Increasing_Triplet_Subsequence {
             }
         }
 
+
+
+
+
+//    //LIS Solution: TC->O(NlogN)
+//    class Solution1 {
+//        public boolean increasingTriplet(int[] nums) {
+//            int n= nums.length;
+//            ArrayList<Integer> lis = new ArrayList<>();
+//            for(int i=0;i<n;++i){
+//                int lb = lower_bound(lis.begin(),lis.end(),nums[i])-lis.begin();
+//                if(lb==lis.size())
+//                    lis.push_back(nums[i]);
+//                else
+//                    lis[lb] = nums[i];
+//            }
+//            return lis.size()>=3;
+//        }
+//    };
+
+//    class Solution2 {
+//        public boolean increasingTriplet(vector<int>& nums) {
+//            int n=nums.size();
+//            int k=3;
+//            vector<long long> increasing(k,LONG_MAX);
+//
+//            //Find an increasing subsequence of length k
+//            for(int i=0;i<n;++i){
+//                for(int j=0;j<k;++j){
+//                    if(increasing[j]>=nums[i]){
+//                        increasing[j]=nums[i];
+//                        break;
+//                    }
+//                }
+//                if(increasing[k-1]!=LONG_MAX)
+//                    return true;//Found increasing subsequence of length K
+//            }
+//            return false;
+//        }
+//    };
 
 
 }
