@@ -37,27 +37,51 @@ public class Code10_334_Increasing_Triplet_Subsequence {
                 boolean result = code10334IncreasingTripletSubsequence.increasingTriplet(testCases[i]);
                 System.out.println("Test case " + (i + 1) + ": " + result);
             }
+            Solution1 solution1 = new Solution1();
+
+
+       System.out.println("==========");
+
+            for (int i = 0; i < testCases.length; i++) {
+               boolean result = solution1.increasingTriplet(testCases[i]);
+               System.out.println("Test case " + (i + 1) + ": " + result);
+            }
+
+
+
         }
 
 
 
 
 
-//    //LIS Solution: TC->O(NlogN)
-//    class Solution1 {
-//        public boolean increasingTriplet(int[] nums) {
-//            int n= nums.length;
-//            ArrayList<Integer> lis = new ArrayList<>();
-//            for(int i=0;i<n;++i){
+    //LIS Solution: TC->O(NlogN)
+    static class Solution1 {
+        public boolean increasingTriplet(int[] nums) {
+            int n= nums.length;
+            ArrayList<Integer> lis = new ArrayList<>();
+            lis.add(nums[0]);
+            for(int i=1;i<n;++i){
+
+                if(nums[i] < lis.get(lis.size() - 1))
+                {
+                    lis.removeLast();
+                    lis.addLast(nums[i]);
+                }
+                else if(nums[i] > lis.get(lis.size() - 1))
+                {
+                    lis.addLast(nums[i]);
+                }
+
 //                int lb = lower_bound(lis.begin(),lis.end(),nums[i])-lis.begin();
 //                if(lb==lis.size())
 //                    lis.push_back(nums[i]);
 //                else
 //                    lis[lb] = nums[i];
-//            }
-//            return lis.size()>=3;
-//        }
-//    };
+            }
+            return lis.size()>=3;
+        }
+    };
 
 //    class Solution2 {
 //        public boolean increasingTriplet(vector<int>& nums) {
