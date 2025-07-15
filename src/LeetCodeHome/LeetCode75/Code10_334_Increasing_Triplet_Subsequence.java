@@ -1,6 +1,9 @@
 package LeetCodeHome.LeetCode75;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Code10_334_Increasing_Triplet_Subsequence {
 
@@ -24,6 +27,8 @@ public class Code10_334_Increasing_Triplet_Subsequence {
             Code10_334_Increasing_Triplet_Subsequence code10334IncreasingTripletSubsequence = new Code10_334_Increasing_Triplet_Subsequence();
 
             int[][] testCases = {
+                    {2,1,5,0,4,6}, // true
+                    {6, 7, 1, 2},      // true
                     {1, 2, 3, 4, 5},      // true
                     {5, 4, 3, 2, 1},      // false
                     {2, 1, 5, 0, 4, 6},   // true
@@ -57,52 +62,51 @@ public class Code10_334_Increasing_Triplet_Subsequence {
 
     //LIS Solution: TC->O(NlogN)
     static class Solution1 {
+
         public boolean increasingTriplet(int[] nums) {
-            int n= nums.length;
-            ArrayList<Integer> lis = new ArrayList<>();
-            lis.add(nums[0]);
-            for(int i=1;i<n;++i){
+            List<Integer> lis = new ArrayList<>();
 
-                if(nums[i] < lis.get(lis.size() - 1))
-                {
-                    lis.removeLast();
-                    lis.addLast(nums[i]);
-                }
-                else if(nums[i] > lis.get(lis.size() - 1))
-                {
-                    lis.addLast(nums[i]);
-                }
+            for (int num : nums) {
+                int idx = Collections.binarySearch(lis, num);
 
-//                int lb = lower_bound(lis.begin(),lis.end(),nums[i])-lis.begin();
-//                if(lb==lis.size())
-//                    lis.push_back(nums[i]);
-//                else
-//                    lis[lb] = nums[i];
+//                If num exists in lis, it returns the index.
+//                If not, it returns -(insertion point) - 1.
+
+                if (idx < 0) {
+                    idx = -idx - 1; // lower_bound behavior
+                }
+                if (idx == lis.size()) {
+                    lis.add(num);
+                } else {
+                    lis.set(idx, num);
+                }
             }
-            return lis.size()>=3;
+
+            return lis.size() >= 3;
         }
     };
 
-//    class Solution2 {
-//        public boolean increasingTriplet(vector<int>& nums) {
-//            int n=nums.size();
-//            int k=3;
-//            vector<long long> increasing(k,LONG_MAX);
-//
-//            //Find an increasing subsequence of length k
-//            for(int i=0;i<n;++i){
-//                for(int j=0;j<k;++j){
-//                    if(increasing[j]>=nums[i]){
-//                        increasing[j]=nums[i];
-//                        break;
-//                    }
-//                }
-//                if(increasing[k-1]!=LONG_MAX)
-//                    return true;//Found increasing subsequence of length K
-//            }
-//            return false;
-//        }
-//    };
+    class Solution2 {
+
+        public boolean increasingKSubsequence(int[] nums, int k) {
+            long[] increasing = new long[k];
+            Arrays.fill(increasing, Long.MAX_VALUE);
+
+            for (int num : nums) {
+                for (int j = 0; j < k; j++) {
+                    if (increasing[j] >= num) {
+                        increasing[j] = num;
+                        break;
+                    }
+                }
+                if (increasing[k - 1] != Long.MAX_VALUE) {
+                    return true; // Found increasing subsequence of length k
+                }
+            }
+
+            return false;
+        }
+    };
 
 
 }
