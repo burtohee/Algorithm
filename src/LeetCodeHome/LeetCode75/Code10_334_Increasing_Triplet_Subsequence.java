@@ -63,11 +63,27 @@ public class Code10_334_Increasing_Triplet_Subsequence {
     //LIS Solution: TC->O(NlogN)
     static class Solution1 {
 
+        private int lowerBound(List<Integer> list, int target) {
+            int left = 0, right = list.size();
+
+            while (left < right) {
+                int mid = left + (right - left) >> 1;
+                if (list.get(mid) < target) {
+                    left = mid + 1;
+                } else {
+                    right = mid;
+                }
+            }
+
+            return left; // Insertion index
+        }
+
         public boolean increasingTriplet(int[] nums) {
             List<Integer> lis = new ArrayList<>();
 
             for (int num : nums) {
-                int idx = Collections.binarySearch(lis, num);
+//                int idx = Collections.binarySearch(lis, num);
+                int idx = lowerBound(lis, num);
 
 //                If num exists in lis, it returns the index.
 //                If not, it returns -(insertion point) - 1.
