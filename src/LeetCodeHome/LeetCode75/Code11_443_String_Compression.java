@@ -1,6 +1,6 @@
 package LeetCodeHome.LeetCode75;
 
-public class Code_11_443_String_Compression {
+public class Code11_443_String_Compression {
 
     public int compress(char[] chars) {
 
