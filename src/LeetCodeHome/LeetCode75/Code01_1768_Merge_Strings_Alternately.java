@@ -3,7 +3,31 @@ package LeetCodeHome.LeetCode75;
 public class Code01_1768_Merge_Strings_Alternately {
 
     public String mergeAlternately(String word1, String word2) {
-        return "";
+
+        int a =0;
+        int b = 0;
+
+        int i = word1.length();
+        int j = word2.length();
+
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        while(a < i && b < j)
+        {
+            stringBuilder.append(word1.charAt(a++)).append(word2.charAt(b++));
+        }
+
+        if(a<i)
+        {
+            stringBuilder.append(word1, a, i);
+        }
+
+        if(b<j)
+        {
+            stringBuilder.append(word2, b, j);
+        }
+        return stringBuilder.toString();
     }
 
 
@@ -11,7 +35,7 @@ public class Code01_1768_Merge_Strings_Alternately {
     public static void main(String [] args)
     {
         Code01_1768_Merge_Strings_Alternately code011768MergeStringsAlternately = new Code01_1768_Merge_Strings_Alternately();
-        code011768MergeStringsAlternately.mergeAlternately("abc", "pqr");
+        code011768MergeStringsAlternately.mergeAlternately("abc", "pqr++");
     }
 
     class Solution1 {
