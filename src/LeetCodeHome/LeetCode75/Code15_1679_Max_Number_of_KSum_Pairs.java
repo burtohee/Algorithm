@@ -10,24 +10,13 @@ public class Code15_1679_Max_Number_of_KSum_Pairs {
     public static void main(String [] args)
     {
         Code15_1679_Max_Number_of_KSum_Pairs code151679MaxNumberOfKSumPairs = new Code15_1679_Max_Number_of_KSum_Pairs();
-        int[][] testCases = {
-                {1,8,6,2,5,4,8,3,7}, // 49
-                {1,1}, // 1
-                {1,0}, // 0
-                {0,0,0,1,2,0,0,8,0,1}, // 49
-
-//                {6, 7, 1, 2},      // true
-//                {1, 2, 3, 4, 5},      // true
-//                {5, 4, 3, 2, 1},      // false
-//                {2, 1, 5, 0, 4, 6},   // true
-//                {20, 100, 10, 12, 5, 13}, // true
-//                {1, 1, 1, 1, 1},      // false
-//                {1, 2, 1, 3},          // true
-//                {5, 1, 6}          // false
+        int[][][] testCases = {
+                {{1,8,6,2,5,4,8,3,7,0}, {5}},
         };
 
         for (int i = 0; i < testCases.length; i++) {
-            int result = code151679MaxNumberOfKSumPairs.maxOperations(testCases[i]);
+
+            int result = code151679MaxNumberOfKSumPairs.maxOperations(testCases[i][0], testCases[i][1][0]);
 
             System.out.println("Test case " + (i + 1) + ": " + result);
         }
