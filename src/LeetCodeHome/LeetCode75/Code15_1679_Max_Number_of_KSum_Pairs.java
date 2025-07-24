@@ -57,7 +57,7 @@ public class Code15_1679_Max_Number_of_KSum_Pairs {
     }
 
 
-    class Solution {
+    class Solution1 {
         public int maxOperations(int[] nums, int k) {
             int n=nums.length,rest,present=0;
             Arrays.sort(nums);
