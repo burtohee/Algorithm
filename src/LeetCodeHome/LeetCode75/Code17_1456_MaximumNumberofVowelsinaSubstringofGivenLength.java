@@ -37,21 +37,28 @@ public class Code17_1456_MaximumNumberofVowelsinaSubstringofGivenLength {
 
     class Solution1 {
         public int maxVowels(String s, int k) {
+            // array helper
             int[] vowels = new int[s.length()];
 
+            // mark all vowels position with one
             for(int i = 0; i<vowels.length; i++) {
                 if(isVowel(s.charAt(i)))
                     vowels[i] = 1;
             }
 
+            // get first sum of first window
             int sum = 0;
             for(int i = 0; i<k; i++) {
                 sum+=vowels[i];
             }
+            // two pointer and result holder
             int max = sum;
             int begin = 1, end = k;
+            // make sure end pointer will not overflow array length
             while(end<vowels.length) {
+                // step to remove/do nothing to sum for previous begin
                 sum-=vowels[begin-1];
+                // step to add/do nothing(not vowel) to sum for end pointer
                 sum+= vowels[end];
                 if(sum > max) max = sum;
                 begin++;
