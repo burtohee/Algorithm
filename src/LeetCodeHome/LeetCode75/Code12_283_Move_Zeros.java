@@ -29,14 +29,14 @@ public class Code12_283_Move_Zeros {
 
 
     public void moveZeroes(int[] nums) {
-        int zero = 0;
+        int zeroLocation = 0;
         for (int i = 0; i <  nums.length; i++) {
             if (nums[i] != 0) {
-                nums[zero++] = nums[i];
+                nums[zeroLocation++] = nums[i];
             }
         }
-        while(zero < nums.length) {
-            nums[zero++] = 0;
+        while(zeroLocation < nums.length) {
+            nums[zeroLocation++] = 0;
         }
 
 //         i
