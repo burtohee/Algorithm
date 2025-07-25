@@ -10,6 +10,7 @@ public class Code12_283_Move_Zeros {
         Code12_283_Move_Zeros code12283MoveZeros = new Code12_283_Move_Zeros();
 
         int[][] testCases = {
+                {1},
                 {0,1,0,3,12}
 //                {2,1,5,0,4,6}, // true
 //                {6, 7, 1, 2},      // true
@@ -33,6 +34,7 @@ public class Code12_283_Move_Zeros {
         for (int i = 0; i <  nums.length; i++) {
             if (nums[i] != 0) {
                 nums[zeroLocation++] = nums[i];
+                nums[i] = 0;
             }
         }
         while(zeroLocation < nums.length) {
@@ -110,6 +112,37 @@ public class Code12_283_Move_Zeros {
 
                 i++;
             }
+
+//         i
+//           j
+//        [0,1,0,3,12]
+
+//           i
+//             j
+//        [1,0,0,3,12]
+
+
+        }
+    }
+
+    class Solution3 {
+        public void moveZeroes(int[] nums) {
+            int zero = 0;
+            for (int i = 1; i <  nums.length; i++) {
+                if (nums[zero] != 0) {
+                    zero++;
+                    continue;
+                }
+                if(nums[i] != 0)
+                {
+                    nums[zero++] = nums[i];
+                    nums[i] = 0;
+
+                }
+
+
+            }
+
 
 //         i
 //           j
