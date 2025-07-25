@@ -30,16 +30,32 @@ public class Code12_283_Move_Zeros {
 
 
     public void moveZeroes(int[] nums) {
-        int zeroLocation = 0;
-        for (int i = 0; i <  nums.length; i++) {
+        int zeroLocation = 0, length = nums.length;
+        for (int i = 0; i <  length; i++) {
             if (nums[i] != 0) {
                 nums[zeroLocation++] = nums[i];
-                nums[i] = 0;
             }
         }
-        while(zeroLocation < nums.length) {
+        while(zeroLocation < length) {
             nums[zeroLocation++] = 0;
         }
+    }
+
+    class Solution1 {
+        public void moveZeroes(int[] nums) {
+            int zero = 0;
+            for (int i = 0; i <  nums.length; i++) {
+                if (nums[i] != 0) {
+                    nums[zero++] = nums[i];
+                }
+            }
+            while(zero < nums.length) {
+                nums[zero++] = 0;
+            }
+//         i
+//         j
+//        [0,1,0,3,12]
+
 
 //         i
 //           j
@@ -48,12 +64,11 @@ public class Code12_283_Move_Zeros {
 //           i
 //             j
 //        [1,0,0,3,12]
-
-
+        }
     }
 
 
-    class Solution1 {
+    class Solution2 {
         public void moveZeroes(int[] nums) {
 
             LinkedList<Integer> list = new LinkedList<>();
@@ -84,7 +99,7 @@ public class Code12_283_Move_Zeros {
         }
     }
 
-    class Solution2 {
+    class Solution3 {
         public void swap(int [] nums , int i, int j)
         {
             nums[i] = nums[i] ^ nums[j];
@@ -125,7 +140,7 @@ public class Code12_283_Move_Zeros {
         }
     }
 
-    class Solution3 {
+    class Solution4 {
         public void moveZeroes(int[] nums) {
             int zero = 0;
             for (int i = 1; i <  nums.length; i++) {
