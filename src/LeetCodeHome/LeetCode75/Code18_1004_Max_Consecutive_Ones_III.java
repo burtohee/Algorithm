@@ -57,7 +57,7 @@ public class Code18_1004_Max_Consecutive_Ones_III {
         }
     }
 
-    class Solution2 {
+    class Solution 2 {
         public int longestOnes(int[] nums, int k) {
             int right=0,res=0,maxres=0;
             int p=k;
