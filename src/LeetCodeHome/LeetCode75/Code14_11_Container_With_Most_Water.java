@@ -26,9 +26,6 @@ public class Code14_11_Container_With_Most_Water {
 
             System.out.println("Test case " + (i + 1) + ": " + result);
         }
-
-
-
     }
 
     public int maxArea(int[] height) {
