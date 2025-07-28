@@ -29,25 +29,22 @@ public class Code21_724_Find_Pivot_Index {
     }
 
     public int pivotIndex(int[] nums) {
-        int i = 0, len = nums.length;
-        int [] preArray = new int[len];
-        for(i = 1; i < len; i++)
+        int rsum = 0;
+        for(int i : nums)
         {
-            preArray[i] = preArray[i - 1] + nums[i - 1];
+            rsum += i;
         }
-        int [] sufArray = new int[len];
-        for(i = len - 2; i > -1; i--)
+        int lsum = 0;
+        for(int i = 0 ; i < nums.length; i++)
         {
-            sufArray[i] = sufArray[i + 1] + nums[i + 1];
+            rsum -= nums[i];
+            if(lsum == rsum)
+            {
+                return i;
+            }
+            lsum += nums[i];
         }
 
-        for(i = 0; i < len; i++)
-        {
-            if(preArray[i] == sufArray[i])
-            {
-                return  i;
-            }
-        }
         return -1;
     }
 
