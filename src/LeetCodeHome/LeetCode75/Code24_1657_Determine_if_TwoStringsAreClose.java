@@ -137,6 +137,26 @@ public class Code24_1657_Determine_if_TwoStringsAreClose {
             Collections.sort(values1);
             Collections.sort(values2);
 
+
+            String[] arr = {"1", "2", "3"};
+            List<String> list = Arrays.stream(arr).toList();
+
+            list = Arrays.asList(arr);
+
+            list = Arrays.stream(arr)
+                    .map(s -> "x" + s) // transform each string
+                    .collect(Collectors.toList());
+
+            list = Arrays.stream(arr)
+                    .flatMap(s -> Arrays.stream(s.split(",")))
+                    .collect(Collectors.toList());
+
+            List<Integer> list1 = Arrays.stream(arr)
+                    .map(Integer::parseInt) // convert each String to Integer
+                    .collect(Collectors.toList());
+
+
+
             return values1.equals(values2);
         }
     }
