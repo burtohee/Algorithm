@@ -34,26 +34,21 @@ public class Code26_2390_Removing_Stars_FromaString {
 
 
     public String removeStars(String s) {
-        Stack<Character> stack = new Stack<>();
-        char[] chars = s.toCharArray();
-
-        for(char c: chars)
-        {
-            if(c != '*')
-            {
-                stack.add(c);
-            }
-            else
-            {
-                stack.pop();
-            }
+        int len = s.length();
+        char[] cs = new char[len];
+        cs[0] = s.charAt(0);
+        int top = 0;
+        for(int i=1;i<len;i++){
+            char cc = s.charAt(i);
+            if(cc == '*') cs[top--] = '\u0000';
+            else cs[++top] = cc;
         }
-        StringBuilder stringBuilder = new StringBuilder();
-        for(char ch: stack)
-        {
-            stringBuilder.append(ch);
-        }
-        return stringBuilder.toString();
+        // StringBuilder sb = new StringBuilder();
+        // for(char c:cs){
+        //     if(c == '\u0000') continue;
+        //     sb.append(c);
+        // }
+        return new String(cs,0,top+1);
     }
 
     class Solution1 {
