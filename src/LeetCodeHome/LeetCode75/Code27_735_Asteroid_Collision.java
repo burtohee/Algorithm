@@ -47,44 +47,46 @@ public class Code27_735_Asteroid_Collision {
 //    }
 
     public int[] asteroidCollision(int[] asteroids) {
-        Stack<Integer> result = new Stack<>();
-        for(int i = 0; i < asteroids.length; i++)
-        {
-            if(result.isEmpty())
-            {
-                result.add(asteroids[i]);
-                continue;
-            }
-            if(!(result.peek() > 0 && asteroids[i] < 0))
-            {
-                result.add(asteroids[i]);
-            }
-            else
-            {
-                int pop = result.pop();
+        // Stack<Integer> result = new Stack<>();
+        // for(int i = 0; i < asteroids.length; i++)
+        // {
+        //     if(result.isEmpty())
+        //     {
+        //         result.add(asteroids[i]);
+        //         continue;
+        //     }
+        //     if(!(result.peek() > 0 && asteroids[i] < 0))
+        //     {
+        //         result.add(asteroids[i]);
+        //     }
+        //     else
+        //     {
+        //         int pop = result.pop();
 
-                while(!result.isEmpty() && (result.peek() > 0 && asteroids[i] < 0) && Math.abs(asteroids[i]) > Math.abs(pop))
-                {
-                    pop = result.pop();
-                }
+        //         while(!result.isEmpty() && (result.peek() > 0 && asteroids[i] < 0) && Math.abs(asteroids[i]) > Math.abs(pop))
+        //         {
+        //             pop = result.pop();
+        //         }
 
-                if(result.isEmpty() && Math.abs(pop) < Math.abs(asteroids[i]))
-                {
-                    result.add(asteroids[i]);
-                }
-                else{
-                    if(Math.abs(pop) < Math.abs(asteroids[i]))
-                    {
-                        result.add(asteroids[i]);
-                    }
-                    if(Math.abs(pop) > Math.abs(asteroids[i]))
-                    {
-                        result.add(pop);
-                    }
-                }
-            }
-        }
-        return result.stream().mapToInt(Integer::intValue).toArray();
+        //         if(result.isEmpty() && Math.abs(pop) < Math.abs(asteroids[i]))
+        //         {
+        //             result.add(asteroids[i]);
+        //         }
+        //         else{
+        //             if(Math.abs(pop) < Math.abs(asteroids[i]))
+        //             {
+        //                 result.add(asteroids[i]);
+        //             }
+        //             if(Math.abs(pop) > Math.abs(asteroids[i]))
+        //             {
+        //                 result.add(pop);
+        //             }
+        //         }
+        //     }
+        // }
+        // return result.stream().mapToInt(Integer::intValue).toArray();
+
+        return new int[1];
     }
 
     class Solution1 {
