@@ -18,6 +18,9 @@ public class Code29_933_NumberofRecent_Calls {
             end = 0;
         }
         public int ping(int t) {
+
+//            d < t - 3000
+//            t - d > 3000 (it is when condition does not meet)
             while (start < end && (t - records[start] > 3000)) {
                 start++;
             }
