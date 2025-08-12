@@ -16,14 +16,15 @@ public class CustomizeQueue{
 
     public boolean isEmpty()
     {
-        if(front == -1 && rear == -1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return front == -1 && rear == -1;
+//        if(front == -1 && rear == -1)
+//        {
+//            return true;
+//        }
+//        else
+//        {
+//            return false;
+//        }
     }
 
     public boolean ifFull()
@@ -34,14 +35,15 @@ public class CustomizeQueue{
                 next position of rear: (i + 1) % N; if i = N - 1, next position of rear will be N % N = 0
                 prev position of rear: (i + N -1) % N; (i + N -1) make sure the value is positive
              */
-        if( (rear + 1) % queue.length == front)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+//        if( (rear + 1) % queue.length == front)
+//        {
+//            return true;
+//        }
+//        else
+//        {
+//            return false;
+//        }
+        return (rear + 1) % queue.length == front;
     }
 
     public void enQueue(int x)
@@ -58,7 +60,6 @@ public class CustomizeQueue{
             rear = (rear + 1) % queue.length;
         }
         queue[rear] = x;
-
     }
 
     public void deQueue()
