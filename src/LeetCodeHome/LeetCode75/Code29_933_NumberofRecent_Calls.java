@@ -31,7 +31,7 @@ public class Code29_933_NumberofRecent_Calls {
 
         private Queue<Integer> queue;
 
-        public RecentCounter() {
+        public RecentCounter3() {
             queue = new LinkedList<>();
         }
 
