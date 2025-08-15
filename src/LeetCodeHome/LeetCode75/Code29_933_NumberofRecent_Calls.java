@@ -29,6 +29,34 @@ public class Code29_933_NumberofRecent_Calls {
         }
     }
 
+    class RecentCounter2 {
+        private static final int[] records = new int[10001];
+        private int start;
+        private int end;
+        public RecentCounter2() {
+            start = 0;
+            end = 0;
+        }
+        public int ping(int t) {
+
+//            d < t - 3000
+//            t - d > 3000 (it is when condition does not meet)
+            while (start < end && (t - records[start] > 3000)) {
+                start++;
+            }
+            if(start == end)
+            {
+                start = 0;
+                end = 0;
+            }
+//            records[end++] = t;
+            records[end] = t;
+            end = (end + 1) % records.length;
+
+            return end - start;
+        }
+    }
+
 
     class RecentCounter3 {
 
