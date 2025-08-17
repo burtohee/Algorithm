@@ -33,7 +33,9 @@ public class Code30_649_Dota2_Senate {
     }
 
     public String predictPartyVictory(String senate) {
-        return "";
+        Solution solution = new Solution();
+        return solution.predictPartyVictory(senate);
+//        return "";
     }
 
     class Solution {
