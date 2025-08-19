@@ -48,7 +48,7 @@ public class Code31_2095_Deletethe_Middle_NodeofaLinkedList {
 
     public ListNode deleteMiddle(ListNode head) {
         if(head == null || head.next == null)
-            return head;
+            return null;
         ListNode prev = null, slow = head, fast = head;
 
         while(fast != null && fast.next != null)
