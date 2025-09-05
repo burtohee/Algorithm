@@ -2,7 +2,7 @@ package LeetCodeHome.LeetCode75;
 
 public class Code34_2130_MaximumTwinSumofaLinkedList {
 
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
         ListNode() {}
@@ -21,7 +21,7 @@ public class Code34_2130_MaximumTwinSumofaLinkedList {
      *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
      * }
      */
-    class Solution {
+    static class Solution3 {
         public int pairSum(ListNode head) {
 
             int length = 0;
@@ -43,14 +43,37 @@ public class Code34_2130_MaximumTwinSumofaLinkedList {
                 mid--;
             }
 
+            ListNode pre = null, next = null;
+            while(secondHalfHead != null)
+            {
+                next = secondHalfHead.next;
+                secondHalfHead.next = pre;
+                pre = secondHalfHead;
+                secondHalfHead = next;
+            }
+            secondHalfHead = pre;
+            int max = Integer.MIN_VALUE;
+            while(secondHalfHead != null)
+            {
+                int sum = firstHalfHead.val + secondHalfHead.val;
+                if(sum > max)
+                {
+                    max = sum;
+                }
+                secondHalfHead = secondHalfHead.next;
+                firstHalfHead = firstHalfHead.next;
+            }
 
-            return 1;
+
+            return max;
         }
     }
 
-    public void main()
+
+
+    public static void main(String [] args)
     {
-        Solution solution = new Solution();
+        Solution3 solution3 = new Solution3();
         ListNode node1 = new ListNode(5);
         ListNode node2 = new ListNode(4);
         ListNode node3 = new ListNode(2);
@@ -59,7 +82,8 @@ public class Code34_2130_MaximumTwinSumofaLinkedList {
         node2.next = node3;
         node3.next = node4;
 
-        solution.pairSum(node1);
+        int result = solution3.pairSum(node1);
+        System.out.println(result);
 
     }
 }
