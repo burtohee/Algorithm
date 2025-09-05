@@ -217,7 +217,7 @@ public class Code02_BitMap2 {
 
         System.out.println("测试开始！");
 
-        int maxValue = 200000000;
+        int maxValue = Integer.MAX_VALUE - 64;
         BitMap bitMap = new BitMap(maxValue);
         HashSet<Integer> set = new HashSet<>();
 
