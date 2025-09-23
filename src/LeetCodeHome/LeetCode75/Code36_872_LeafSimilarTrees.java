@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Code36_872_LeafSimilarTrees {
 
-    public class TreeNode {
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -35,7 +35,7 @@ public class Code36_872_LeafSimilarTrees {
      *     }
      * }
      */
-    class Solution {
+    static class Solution {
         public void collectLeaves(TreeNode root, List<Integer> list)
         {
             if(root == null)
@@ -68,6 +68,37 @@ public class Code36_872_LeafSimilarTrees {
             // Compare the two leaf value sequences
             return leafValues1.equals(leafValues2);
         }
+    }
+
+
+    public static void main(String [] args)
+    {
+        TreeNode treeNode1 = new TreeNode(3);
+        treeNode1.left = new TreeNode(5);
+        treeNode1.left.left = new TreeNode(6);
+        treeNode1.left.right = new TreeNode(2);
+        treeNode1.left.right.left = new TreeNode(7);
+        treeNode1.left.right.right = new TreeNode(4);
+
+        treeNode1.right = new TreeNode(1);
+        treeNode1.right.left = new TreeNode(9);
+        treeNode1.right.right = new TreeNode(8);
+
+        TreeNode treeNode2 = new TreeNode(3);
+        treeNode2.left = new TreeNode(5);
+        treeNode2.left.left = new TreeNode(6);
+        treeNode2.left.right = new TreeNode(7);
+
+        treeNode2.right = new TreeNode(1);
+        treeNode2.right.left = new TreeNode(4);
+        treeNode2.right.right = new TreeNode(2);
+
+        treeNode2.right.right.left = new TreeNode(9);
+        treeNode2.right.right.right = new TreeNode(8);
+
+        Solution solution = new Solution();
+
+        System.out.println(solution.leafSimilar(treeNode1,treeNode2));
     }
 
 
