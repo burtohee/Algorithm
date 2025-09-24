@@ -35,19 +35,10 @@ public class Code35_104_MaximumDepthofBinaryTree {
      */
     class Solution {
         public int maxDepth(TreeNode root) {
-            if(root == null)
-            {
-                return 0;
-            }
+            if(root == null) return 0;
             int lcount = 0, rcount = 0;
-            if(root.left != null)
-            {
-                lcount = maxDepth(root.left);
-            }
-            if(root.right != null)
-            {
-                rcount = maxDepth(root.right);
-            }
+            if(root.left != null) lcount = maxDepth(root.left);
+            if(root.right != null) rcount = maxDepth(root.right);
             return Math.max(lcount, rcount) + 1;
         }
     }
