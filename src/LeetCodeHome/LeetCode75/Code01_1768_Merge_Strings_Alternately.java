@@ -2,6 +2,31 @@ package LeetCodeHome.LeetCode75;
 
 public class Code01_1768_Merge_Strings_Alternately {
 
+    class Solution {
+        public String mergeAlternately(String word1, String word2) {
+            int i = 0, j =0;
+            int a = word1.length(), b =word2.length();
+            StringBuilder stringBuilder = new StringBuilder();
+            while(i < a && j < b)
+            {
+                stringBuilder.append(word1.charAt(i));
+                stringBuilder.append(word2.charAt(j));
+                i++;
+                j++;
+            }
+            if(i < a)
+            {
+                stringBuilder.append(word1, i, a);
+            }
+            if(j < b)
+            {
+                stringBuilder.append(word2, j, b);
+            }
+            return stringBuilder.toString();
+        }
+    }
+
+
     public String mergeAlternately(String word1, String word2) {
 
         int a =0;
