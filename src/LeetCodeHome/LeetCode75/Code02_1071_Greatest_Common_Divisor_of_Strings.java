@@ -45,8 +45,13 @@ public class Code02_1071_Greatest_Common_Divisor_of_Strings {
 
     public static void main(String [] args)
     {
-        String result = processGreatest_Common_Divisor_of_Strings("abc", "abcabc");
+        String result = processGreatest_Common_Divisor_of_Strings("ABABAB", "ABAB");
         System.out.println(result);
+
+        Solution solution = new Solution();
+        String result1 = solution.gcdOfStrings("ABABAB", "ABAB");
+        System.out.println(result1);
+
     }
 
 
@@ -88,6 +93,20 @@ public class Code02_1071_Greatest_Common_Divisor_of_Strings {
                 }
             }
             return 1;
+        }
+    }
+
+    static class Solution {
+        public String gcdOfStrings(String str1, String str2) {
+            if(!(str1 + str2).equals(str2+str1)) return "";
+
+            int gcdLength = gcd(str1.length(), str2.length());
+            return str1.substring(0, gcdLength);
+        }
+        public int gcd(int a, int b)
+        {
+            if(b==0) return a;
+            return gcd(b,a%b);
         }
     }
 
